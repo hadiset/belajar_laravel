@@ -1,37 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Daftar Kateogri</title>
-</head>
-<body>
-    <div>
-        <p>TODO: list daftar kategori</p>
-        
-        <?php echo e($daftar_kategori[0]->name); ?>
+<?php $__env->startSection('title'); ?>
+    Daftar Kategori
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+    <p>TODO: list daftar kategori</p>
+    
+    <?php echo e($daftar_kategori[0]->name); ?>
 
 
-        <?php if($daftar_kategori[0]->name == 'Elektronik'): ?>
+    <?php $__currentLoopData = $daftar_kategori; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $kategori): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
         
-        <div>Munculkan sidebar kiri</div>
-        
-        <?php elseif($daftar_kategori[0]->name == 'Ransel'): ?>
-        
-        <div>Munculkan sidebar kanan</div>
-        
-        <?php else: ?>
-        
-        <div>Tidak ada sidebar</div>
-        <?php endif; ?>
+        <h1><?php echo e($kategori->id); ?> . <?php echo e($kategori->name); ?></h1>            
+    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
-        <?php if (! ($daftar_kategori[0]->name == 'Tas')): ?>
-        
-            Kamu belum keren
-        <?php endif; ?>
+    <hr />
+    
+    <?php echo e($daftar_kategori->links()); ?>
 
 
-    </div>
-</body>
-</html><?php /**PATH /var/www/toko-online/resources/views/category/index.blade.php ENDPATH**/ ?>
+    <?php if($daftar_kategori[0]->name == 'Elektronik'): ?>
+    
+    <div>Munculkan sidebar kiri</div>
+
+    <?php elseif($daftar_kategori[0]->name == 'Ransel'): ?>
+    
+    <div>Munculkan sidebar kanan</div>
+
+    <?php else: ?>
+    
+    <div>Tidak ada sidebar</div>
+    <?php endif; ?>
+
+    <?php if (! ($daftar_kategori[0]->name == 'Tas')): ?>
+    
+        Kamu belum keren
+    <?php endif; ?>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /var/www/toko-online/resources/views/category/index.blade.php ENDPATH**/ ?>
