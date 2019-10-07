@@ -27,8 +27,10 @@ Route::get('search', 'ProductController@search');
 Route::group(['prefix' => 'latihan'], function(){
     Route::get('/kategori/all', 'CategoryController@index');
     Route::get('/kategori/search', 'CategoryController@search');
+    Route::post('/kategori/add', 'CategoryController@store');
     Route::get('/kategori/{id}/show', 'CategoryController@show');
     Route::get('/kategori/{id}/delete', 'CategoryController@delete');
+    Route::get('/kategori/{id}/destroy', 'CategoryController@destroy');
     Route::get('/kategori/{id}/restore', 'CategoryController@restore');
     Route::get('/kategori/{id}/permanent-delete', 'CategoryController@permanentDelete');
     Route::view('/layouts', 'child');

@@ -86,7 +86,12 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $category = new Category;
+        $category->name = $request->get('nama');
+        $category->description = $request->get('description');
+        if($category->save()){
+            return \Redirect::to('/latihan/kategori/all');
+        }        
     }
 
     /**
@@ -134,6 +139,8 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $category = Category::findOrFail($id);
+        $category->delete();
+        return \Redirect::to('/latihan/kategori/all');
     }
 }
