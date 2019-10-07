@@ -97,7 +97,10 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        //
+        $kategori = \App\Category::find($id);
+
+        // return $kategori->name;
+        return view('category.detail', ['kategori' => $kategori]);
     }
 
     /**
